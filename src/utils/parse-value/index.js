@@ -3,8 +3,6 @@
 import { buildPathFromReference } from '../path';
 import DocumentReference from '../../firebase/firestore/document-reference';
 
-const MAX_RECURSION_DEPTH = 2;
-
 export function isObject(value) {
   return Object.prototype.toString.call(value) === '[object Object]';
 }
@@ -27,9 +25,8 @@ function validateValue(value, option) {
   }
 
   if (isObject(value)) {
-    const depth = option.depth ? option.depth + 1 : 1;
-    if (option.isInObject && depth > MAX_RECURSION_DEPTH) return;
-    const newOption = Object.assign({}, option, { isInObject: true, depth });
+    const newOption = Object.assign({}, option, { isInObject: true });
+
     Object.keys(value).forEach(key => validateValue(value[key], newOption));
   }
 

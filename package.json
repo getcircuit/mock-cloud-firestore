@@ -16,7 +16,7 @@
     "lint": "eslint \"*.js\" \"src/**/*.js\"",
     "qunit": "babel src --out-dir tmp && qunit tmp/**/*-test.js",
     "test": "npm-run-all --continue-on-error lint qunit",
-    "prepare": "npm run clean && npm test && npm run build"
+    "bundle": "npm run clean && npm test && npm run build"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import { isObject } from '../../../utils/parse-value';
+import { isObject, isClass } from '../../../utils/parse-value';
 
 export default class DocumentSnapshot {
   constructor(id, data, ref) {
@@ -61,7 +61,9 @@ export default class DocumentSnapshot {
     delete normalizedData.__collection__;
 
     for (const key of Object.keys(data)) {
-      normalizedData[key] = this._normalizeValue(data[key]);
+      const value = data[key];
+      if (isClass(value)) continue;
+      normalizedData[key] = this._normalizeValue(value);
     }
 
     return normalizedData;

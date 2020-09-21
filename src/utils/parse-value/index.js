@@ -7,6 +7,10 @@ export function isObject(value) {
   return Object.prototype.toString.call(value) === '[object Object]';
 }
 
+export function isClass(value) {
+  return value && value.constructor && value.constructor.name === 'Class';
+}
+
 function isFieldValue(value) {
   return isObject(value) && Object.prototype.hasOwnProperty.call(value, '_methodName');
 }

@@ -125,6 +125,16 @@ export function where(data = {}, key, operator, value) {
       }
 
       return pathValue === value;
+    } if (operator === '!=') {
+      if (value instanceof DocumentReference) {
+        return (
+          pathValue
+          && pathValue.startsWith('__ref__:')
+          && pathValue !== buildPathFromReference(value)
+        );
+      }
+
+      return pathValue !== value;
     } if (operator === '>=') {
       return pathValue >= value;
     } if (operator === 'array-contains') {

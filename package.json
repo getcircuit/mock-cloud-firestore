@@ -15,8 +15,8 @@
     "build": "rollup -c",
     "lint": "eslint \"*.js\" \"src/**/*.js\"",
     "qunit": "babel src --out-dir tmp && qunit tmp/**/*-test.js",
-    "test": "npm-run-all --continue-on-error lint qunit",
-    "prepare": "npm run clean && npm run build"
+    "test": "yarn-run-all --continue-on-error lint qunit",
+    "prepare": "yarn run clean && yarn run build"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,7 @@
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "sinon": "^7.1.0"
+    "sinon": "^7.1.0",
+    "yarn-run-all": "^3.1.1"
   }
 }
